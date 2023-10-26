@@ -134,12 +134,16 @@ function slideImage() {
 
   document.querySelector(".next").addEventListener("click", () => {
     if (i < images.length && i !== images.length - 1) {
-      prevClicks = 0;
-      nextClicks++;
+      if (prevClicks === 0) {
+        nextClicks++;
+      } else {
+        nextClicks = 1 - prevClicks;
+        prevClicks--;
+      }
       images[i].classList.remove("active-img");
       images[i + 1].classList.add("active-img");
-      testimonialImgWrapper.style.transform = `translateX(-${
-        nextClicks * 25
+      testimonialImgWrapper.style.transform = `translateX(${
+        -1 * nextClicks * 87.5
       }px)`;
       i++;
     }
@@ -147,12 +151,16 @@ function slideImage() {
 
   document.querySelector(".prev").addEventListener("click", () => {
     if (i < images.length && i !== 0) {
-      nextClicks = 0;
-      prevClicks++;
+      if (nextClicks === 0) {
+        prevClicks++;
+      } else {
+        prevClicks = 1 - nextClicks;
+        nextClicks--;
+      }
       images[i].classList.remove("active-img");
       images[i - 1].classList.add("active-img");
       testimonialImgWrapper.style.transform = `translateX(${
-        prevClicks * 25
+        prevClicks * 87.5
       }px)`;
       i--;
     }
