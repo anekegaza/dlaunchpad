@@ -121,3 +121,41 @@ function show(n) {
 
   testimonials[counter - 1].style.display = "block";
 }
+
+function slideImage() {
+  const images = document.querySelectorAll(".user-img");
+  const testimonialImgWrapper = document.querySelector(
+    ".testimonial-img-wrapper"
+  );
+  let i = Math.floor(images.length / 2);
+  images[i].classList.add("active-img");
+  let nextClicks = 0;
+  let prevClicks = 0;
+
+  document.querySelector(".next").addEventListener("click", () => {
+    if (i < images.length && i !== images.length - 1) {
+      prevClicks = 0;
+      nextClicks++;
+      images[i].classList.remove("active-img");
+      images[i + 1].classList.add("active-img");
+      testimonialImgWrapper.style.transform = `translateX(-${
+        nextClicks * 25
+      }px)`;
+      i++;
+    }
+  });
+
+  document.querySelector(".prev").addEventListener("click", () => {
+    if (i < images.length && i !== 0) {
+      nextClicks = 0;
+      prevClicks++;
+      images[i].classList.remove("active-img");
+      images[i - 1].classList.add("active-img");
+      testimonialImgWrapper.style.transform = `translateX(${
+        prevClicks * 25
+      }px)`;
+      i--;
+    }
+  });
+}
+slideImage();
