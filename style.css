@@ -550,6 +550,7 @@ nav {
   justify-content: center;
   max-width: 100%;
   overflow-x: hidden;
+  padding-block: 10px;
 }
 .user-img {
   width: 75px;
@@ -561,9 +562,10 @@ nav {
   /* position: calc(50vw); */
   z-index: 0;
   background-position: center;
+  transition: transform 0.4s ease-out;
 }
 .user-img.active-img {
-  width: 100px;
+  transform: scale(1.25);
 }
 
 /* Swiper class */
